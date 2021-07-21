@@ -285,7 +285,9 @@ namespace Atf.UI {
          Rectangle chldBounds;
          if (this.RightToLeft != RightToLeft.Yes) {
             arrBounds.Offset(this.Width - arrowSize.Width - borderSize.Width, borderSize.Height);
-            chldBounds = new Rectangle(0, 0, this.Width - this.ArrowBounds.Width - ArrowSeparatorWidth, this.Height);
+            var w = Convert.ToInt32((this.Width - this.ArrowBounds.Width - ArrowSeparatorWidth) * 96 / Graphics.FromHwnd(Handle).DpiX);
+            var h = Convert.ToInt32(this.Height * 96 / Graphics.FromHwnd(Handle).DpiY);
+            chldBounds = new Rectangle(0, 0, w, h);
             chldBounds.Inflate(-borderSize.Width, -borderSize.Height);
          }
          else {
